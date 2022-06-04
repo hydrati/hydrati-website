@@ -27,10 +27,39 @@
             font-size: 4vw;
             font-weight: 500;
         }
+        
+        .ukr {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            font-size: 1.1em;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            background: rgba(26, 27, 35, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 2vh 0 2vh 0;
+            font-family: 'Google Sans';
+            box-shadow: #00000020 0 0 20px
+        }
+        
+        .ukr>span {
+            color: #fcb80f;
+        }
+        
+        @font-face {
+            font-family: 'Google Sans';
+            src: url('./assets/GoogleSans-Regular.ttf');
+        }
     </style>
 </head>
 
 <body>
+    <a target="_blank" class="ukr" href="https://www.bilibili.com/video/BV1GJ411x7h7">
+        <span>We "always" stand with Ukraine.</span> Help provide humanitarian aid.
+    </a>
     <div id=app>
         <h1>Hi.</h1>
         <h2>This is Hydrogen.</h2>
