@@ -1,0 +1,86 @@
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color-scheme: dark;
+  color: rgba(255, 255, 255, 0.87);
+  background: #0d1117;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: #0d1117;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+#box {
+  overflow: hidden;
+  font-family: 'MiSans';
+  user-select: none;
+  padding-block: 8vh;
+  padding-inline: 15vw;
+}
+
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 578.98px) {
+  #box {
+    padding-block: 8vh;
+    padding-inline: 6vw;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (max-width: 767.98px) {
+  #box {
+    padding-block: 10vh;
+    padding-inline: 8vw;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (man-width: 991.98px) {
+  #box {
+    padding-block: 10vh;
+    padding-inline: 10vw;
+  }
+}
+
+#box > .title {
+  margin: 0;
+  margin-block-end: 1rem;
+  font-size: 1.25rem;
+
+  font-weight: 600;
+  color: white;
+}
+
+#box > p {
+  color: #FFFFFFE0;
+  line-break: word-wrap;
+  font-size: 1rem;
+}
+
+#box > .present {
+  font-size: 0.5rem;
+  color: #FFFFFF40;
+}
