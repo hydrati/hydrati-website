@@ -7,7 +7,7 @@ export const lang: Record<string, string> = {
 
     <p>我是水合 Hydration！</p>
 
-    <p>来自中国广东，是一名初中三年级学生、开源爱好者和 UI/UX 设计师，现就读于广东实验中学。</p>
+    <p>来自中国广东，是一名中学生、开源爱好者和 UI/UX 设计师，现就读于广东实验中学。</p>
 
     <p>我是...</p>
     <ul>
@@ -56,7 +56,7 @@ export const lang: Record<string, string> = {
 
     <p>My nickname is <code>Hydration</code>, I come from Guangdong, China.</p>
 
-    <p>I am a student in Grade 9 as well as a open sourceror and a UI/UX designer. And I am studying in Guangdong Experimental Middle School currently.</p>
+    <p>I am a student as well as a open sourceror and a UI/UX designer. And I am studying in Guangdong Experimental Middle School currently.</p>
 
     <p>I am...</p>
     <ul>
