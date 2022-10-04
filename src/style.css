@@ -1,6 +1,7 @@
+
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 18px;
+  font-family: MiSans, Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
   line-height: 24px;
   font-weight: 400;
 
@@ -32,55 +33,128 @@ p {
   margin: 0;
 }
 
-#box {
+.box {
   overflow: hidden;
-  font-family: 'MiSans';
+  font-family: "MiSans";
   user-select: none;
   padding-block: 15vh;
-  padding-inline: 15vw;
+  padding-inline: 20vw;
+  font-size: 1rem;
 }
-
 
 /* Small devices (landscape phones, 576px and up) */
 @media (max-width: 578.98px) {
-  #box {
+  .box {
     padding-block: 8vh;
     padding-inline: 5vw;
+  }
+  .box > div.title > h1::after {
+    font-size: 1rem;
   }
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media (max-width: 767.98px) {
-  #box {
+  .box {
     padding-block: 10vh;
-    padding-inline: 5vw;
+    padding-inline: 8vw;
+  }
+  .box > div.title > h1::after {
+    font-size: 1.5rem;
   }
 }
 
 /* Large devices (desktops, 992px and up) */
 @media (man-width: 991.98px) {
-  #box {
+  .box {
     padding-block: 10vh;
-    padding-inline: 8vw;
+    padding-inline: 15vw;
+  }
+
+  .box > div.title > h1::after {
+    font-size: 2rem;
   }
 }
 
-#box > .title {
+.box > div.title {
   margin: 0;
-  margin-block-end: 1rem;
+  padding-top: 0.5em;
+  margin-block: 1em;
   font-size: 1.25rem;
 
   font-weight: 600;
   color: white;
+  position: relative;
+
 }
 
-#box > p {
-  color: #FFFFFFE0;
-  line-break: word-wrap;
+.box > div.title > h1 {
+  margin: 0;
+}
+
+.box > div.title > h1::after {
+  margin: 0;
+  margin-block-end: 1rem;
+  font-size: 4rem;
+
+  z-index: 0;
+  font-weight: 600;
+  color: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: 'Hydration!';
+  text-shadow: -0.25rem -2rem 0 #ffffff05;
+}
+
+.box > .present {
+  font-size: 0.5rem;
+  color: #ffffff40;
+}
+
+.line {
+  border-bottom: 1px solid #21262d;
+  margin-block: 1.25em;
+}
+
+.box > .title > .bar {
+  position: relative;
+  top: 0.5em;
+  right: 0;
+  display: inline;
+  flex-direction: row;
+  flex-grow: 1;
+  width: 50vw;
+}
+
+.nav {
+  z-index: 200;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  user-select: none;
   font-size: 1rem;
 }
 
-#box > .present {
-  font-size: 0.5rem;
-  color: #FFFFFF40;
+.nav > a {
+  font-family: MiSans;
+  text-decoration: none;
+  color: white;
+  display: inline-block;
+  padding: 1.25rem;
+  border-radius: 3px;
+  opacity: 0.75;
+  transition: opacity .2s ease;
+}
+
+.nav > a:hover {
+  opacity: 1;
 }

@@ -9,10 +9,12 @@
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@types/dom-to-image": "^2.6.4",
     "typescript": "^4.6.4",
     "vite": "^3.1.0"
   },
   "dependencies": {
+    "dom-to-image": "^2.6.0",
     "github-markdown-css": "^5.1.0",
     "misans": "^3.1.1"
   }
