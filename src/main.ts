@@ -1,7 +1,8 @@
 import './style.css'
 import 'github-markdown-css/github-markdown-dark.css'
 import 'misans/index.css'
-import toImage from 'dom-to-image'
+import toImage from 'dom-to-image-more'
+import { throttle }  from 'lodash'
 
 const search = new URLSearchParams(location.search)
 
@@ -93,7 +94,7 @@ if (!shouldShow) {
   img.onclick = showContent
   content.parentNode?.insertBefore(img, content)
 
-  const render = (async() => {
+  const render = throttle(() => {
     console.log('start render')
     cover.style.display = 'block'
     content.style.display = 'block'
@@ -103,7 +104,7 @@ if (!shouldShow) {
       img.src = src
       cover.style.display = 'none'
     })
-  })
+  }, 500)
 
   window.onresize = render
   render()

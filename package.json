@@ -10,12 +10,14 @@
   },
   "devDependencies": {
     "@types/dom-to-image": "^2.6.4",
+    "@types/lodash": "^4.14.186",
     "typescript": "^4.6.4",
     "vite": "^3.1.0"
   },
   "dependencies": {
-    "dom-to-image": "^2.6.0",
+    "dom-to-image-more": "^2.12.0",
     "github-markdown-css": "^5.1.0",
+    "lodash": "^4.17.21",
     "misans": "^3.1.1"
   }
 }
