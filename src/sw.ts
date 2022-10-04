@@ -1,12 +1,13 @@
 import { precacheAndRoute } from 'workbox-precaching'
 import { registerRoute } from 'workbox-routing'
-import { StaleWhileRevalidate } from 'workbox-strategies'
+import { StaleWhileRevalidate, CacheFirst } from 'workbox-strategies'
 import {} from 'workbox-core'
 import { useMarkdown } from './composables/markdown'
 import { ExpirationPlugin } from 'workbox-expiration'
 import { CacheableResponsePlugin } from 'workbox-cacheable-response'
 
 declare let self: ServiceWorkerGlobalScope
+precacheAndRoute(self.__WB_MANIFEST)
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(self.clients.claim())
@@ -15,9 +16,6 @@ self.addEventListener('activate', (event) => {
 self.oninstall = async (event) => {
   event.waitUntil(self.skipWaiting())
 }
-
-const manifest = self.__WB_MANIFEST
-precacheAndRoute(manifest)
 
 async function updateMarkdown(
   cache: Cache,
@@ -75,14 +73,13 @@ registerRoute(
 
 registerRoute(
   /^.*(\.woff|\.otf|\.ttf|\.woff2)$/,
-  new StaleWhileRevalidate({
+  new CacheFirst({
     cacheName: 'font-cache-v2',
     plugins: [
       new ExpirationPlugin({ maxEntries: 300, maxAgeSeconds: 31536e3 }),
       new CacheableResponsePlugin({ statuses: [0, 200] }),
     ],
-  }),
-  'GET'
+  })
 )
 
 registerRoute(
@@ -98,8 +95,7 @@ registerRoute(
       new ExpirationPlugin({ maxEntries: 300, maxAgeSeconds: 31536e3 }),
       new CacheableResponsePlugin({ statuses: [0, 200] }),
     ],
-  }),
-  'GET'
+  })
 )
 
 export {}
