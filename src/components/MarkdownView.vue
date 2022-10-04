@@ -70,7 +70,7 @@ onMounted(async () => {
     const source = await resp.text()
     finish()
 
-    const [md, matter] = useMarkdown(source)
+    const [md, matter] = await useMarkdown(source)
     if (matter.data?.title != null) {
       page.title = matter.data.title
     }

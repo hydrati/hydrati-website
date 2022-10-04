@@ -7,16 +7,18 @@ import type MarkdownIt from 'markdown-it'
 import type matter from 'gray-matter-browser'
 // import hljs from 'markdown-it-highlightjs'
 
-const [
-  { default: MarkdownIt2 },
-  { default: emoji },
-  { default: abbr },
-  { default: footnote },
-  { default: sub },
-  { default: sup },
-  { default: matter2 },
-  { default: hljs },
-] = await Promise.all([
+// const [
+//   { default: MarkdownIt2 },
+//   { default: emoji },
+//   { default: abbr },
+//   { default: footnote },
+//   { default: sub },
+//   { default: sup },
+//   { default: matter2 },
+//   { default: hljs },
+// ] =
+
+const modules = Promise.all([
   import('markdown-it'),
   import('markdown-it-emoji'),
   import('markdown-it-abbr'),
@@ -27,21 +29,34 @@ const [
   import('markdown-it-highlightjs'),
 ])
 
-const md = new MarkdownIt2({
-  html: true,
-  linkify: false,
-})
+let md: MarkdownIt | null = null
+export async function useMarkdownIt(): Promise<MarkdownIt> {
+  if (md != null) return md
+  const [
+    { default: MarkdownIt2 },
+    { default: emoji },
+    { default: abbr },
+    { default: footnote },
+    { default: sub },
+    { default: sup },
+    // eslint-disable-next-line no-empty-pattern
+    {},
+    { default: hljs },
+  ] = await modules
+  md = new MarkdownIt2({
+    html: true,
+    linkify: false,
+  })
 
-md.use(emoji).use(abbr).use(footnote).use(sub).use(sup).use(hljs)
-
-export function useMarkdownIt(): MarkdownIt {
+  md.use(emoji).use(abbr).use(footnote).use(sub).use(sup).use(hljs)
   return md
 }
 
-export function useMarkdown(
+export async function useMarkdown(
   markdown: string
-): [string, matter.GrayMatterFile<string>] {
+): Promise<[string, matter.GrayMatterFile<string>]> {
+  const { default: matter2 } = (await modules)[6]
   const file = matter2(markdown)
-  const md = useMarkdownIt()
+  const md = await useMarkdownIt()
   return [md.render(file.content), file]
 }
