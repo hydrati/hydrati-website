@@ -74,7 +74,12 @@ registerRoute(
 )
 
 registerRoute(
-  /^.*(\.md|\.markdown)$/i,
+  (opts) => {
+    return (
+      !opts.url.pathname.startsWith('/__sw/render') &&
+      /^.*(\.md|\.markdown)$/i.test(opts.url.pathname)
+    )
+  },
   new StaleWhileRevalidate({
     cacheName: 'articles-cache',
     plugins: [
