@@ -46,6 +46,7 @@
 import Article from '../components/Article.vue'
 import { onMounted, reactive } from 'vue'
 import { useProgress } from '@marcoschulte/vue3-progress'
+import { render } from '../utils/render'
 
 const props = defineProps({
   file: {
@@ -61,22 +62,17 @@ const page = reactive({
   date: 'unknown',
 })
 
-const progress = useProgress()
-
 onMounted(async () => {
   if (!page.ready) {
-    const { useMarkdown } = await import('../composables/markdown')
-    const { finish } = progress.start()
-    const resp = await fetch(props.file)
-    const source = await resp.text()
+    const { finish } = useProgress().start()
+    const [md, data] = await render(props.file)
 
-    const [md, matter] = await useMarkdown(source)
-    if (matter.data?.title != null) {
-      page.title = matter.data.title
+    if (data?.title != null) {
+      page.title = data.title
     }
 
-    if (matter.data?.date != null) {
-      page.date = new Date(matter.data.date).toUTCString()
+    if (data?.date != null) {
+      page.date = new Date(data.date).toUTCString()
     }
 
     page.html = md

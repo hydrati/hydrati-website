@@ -17,25 +17,17 @@ export default defineConfig({
     transformers: [directives(), compileClass()]
   }), vue(), jsx(), VitePWA({
     registerType: 'autoUpdate',
+    strategies: 'injectManifest',
+    srcDir: 'src',
+    filename: 'sw.ts',
     devOptions: {
       enabled: true
     },
-    workbox: {
-      globPatterns: ['**/*.{js,css,html,ico,png,svg,ts,tsx,woff2,woff,ttf,otf}'],
-      runtimeCaching: [{
-        urlPattern: /^.*(\.md|\.markdown)$/i,
-        handler: 'NetworkFirst',
-        options: {
-          cacheName: 'articles-cache',
-          expiration: {
-            maxEntries: 300,
-            maxAgeSeconds: 60 * 60 * 24 * 365 // <== 365 days
-          },
-          cacheableResponse: {
-            statuses: [0, 200]
-          }
-        }
-      }],
+    manifest: {
+
+    },
+    injectManifest: {
+      globPatterns: ['**/*.{woff2,woff,js,css,html,ico,png,svg,ts,tsx}'],
     }
   })],
   server: {
