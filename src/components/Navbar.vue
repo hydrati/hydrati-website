@@ -7,11 +7,18 @@
   </div>
 </template>
 
+<script setup lang="ts">
+import 'misans/lib/misans-300-light.min.css'
+</script>
+
 <style scoped>
 .nav {
+  font-family: MiSans, Helvetica, sans-serif;
+  font-weight: 300;
+  font-display: block;
   @apply z-50 m-0 px-0 py-2 w-full flex absolute left-0 top-0 flex-row
     justify-center align-middle items-center text-center
-    select-none text-1rem opacity-0 hover:opacity-100 transition-opacity;
+    select-none text-1rem transition-opacity delay-75;
 }
 .nav > a {
   text-decoration: none;

@@ -34,6 +34,7 @@
   left: 50%;
   margin: 0;
   padding: 0;
+  font-weight: 300;
   transform: translate(-50%, -50%);
   font-size: 0.85rem;
   color: white;
@@ -68,7 +69,6 @@ onMounted(async () => {
     const { finish } = progress.start()
     const resp = await fetch(props.file)
     const source = await resp.text()
-    finish()
 
     const [md, matter] = await useMarkdown(source)
     if (matter.data?.title != null) {
@@ -80,6 +80,7 @@ onMounted(async () => {
     }
 
     page.html = md
+    finish()
     page.ready = true
   }
 })
