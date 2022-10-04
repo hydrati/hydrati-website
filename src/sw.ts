@@ -74,6 +74,18 @@ registerRoute(
 )
 
 registerRoute(
+  /^.*(\.woff|\.otf|\.ttf|\.woff2)$/,
+  new StaleWhileRevalidate({
+    cacheName: 'font-cache-v2',
+    plugins: [
+      new ExpirationPlugin({ maxEntries: 300, maxAgeSeconds: 31536e3 }),
+      new CacheableResponsePlugin({ statuses: [0, 200] }),
+    ],
+  }),
+  'GET'
+)
+
+registerRoute(
   (opts) => {
     return (
       !opts.url.pathname.startsWith('/__sw/render') &&
