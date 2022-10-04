@@ -1,10 +1,8 @@
 import './style.css'
-import 'github-markdown-css/github-markdown-dark.css'
-import 'misans/index.css'
-import toImage from 'dom-to-image-more'
-import { throttle }  from 'lodash'
+// import toImage from 'dom-to-image-more'
+// import { throttle }  from 'lodash'
 
-const search = new URLSearchParams(location.search)
+// const search = new URLSearchParams(location.search)
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 <navbar class="nav">
@@ -72,40 +70,41 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 </div>`
 
 
-let double = false
-function showContent() {
-  if (!double) {
-    double = true
-  } else {
-    alert(`search.get('show_content') != null`)
-    // search.set('show_content', '')
-    // location.search = search.toString()
-    double = false
-  }
-}
-const shouldShow = search.get('show_content') != null
-if (!shouldShow) {
-  const cover = document.getElementById("cover")!
-  const content = document.getElementById("content")!
+// let double = false
+// function showContent() {
+//   if (!double) {
+//     double = true
+//   } else {
+//     alert(`search.get('show_content') != null`)
+//     // search.set('show_content', '')
+//     // location.search = search.toString()
+//     double = false
+//   }
+// }
+// const shouldShow = search.get('show_content') != null
+// if (!shouldShow) {
+//   const cover = document.getElementById("cover")!
+//   const content = document.getElementById("content")!
 
-  const img = document.createElement('img')
-  img.draggable = false
-  img.setAttribute('style', '-webkit-user-drag:none;width:100%;overflow:hidden;user-select:none;user-drag:none;')
-  img.onclick = showContent
-  content.parentNode?.insertBefore(img, content)
+//   let img = document.createElement('canvas')
+//   content.parentNode?.insertBefore(img, content)
 
-  const render = throttle(() => {
-    console.log('start render')
-    cover.style.display = 'block'
-    content.style.display = 'block'
-    toImage.toPng(content, { quality: 0.5 }).then(src => {
-      content.style.display = 'none'
-      console.log('render done')
-      img.src = src
-      cover.style.display = 'none'
-    })
-  }, 500)
+//   const render = throttle(() => {
+//     console.log('start render')
+//     cover.style.display = 'block'
+//     content.style.display = 'block'
+//     toImage.toCanvas(content, { quality: 0.5, cacheBust: false, style: {} }).then((src: HTMLCanvasElement) => {
+//       content.style.display = 'none'
+//       img.replaceWith(src)
+//       img = src
+//       img.draggable = false
 
-  window.onresize = render
-  render()
-}
+//       img.setAttribute('style', '-webkit-user-drag:none;width:100%;overflow:hidden;user-select:none;user-drag:none;')
+//       img.onclick = showContent
+//       cover.style.display = 'none'
+//     })
+//   }, 500)
+
+//   window.onresize = render
+//   render()
+// }
