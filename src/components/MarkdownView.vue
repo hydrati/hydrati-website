@@ -26,7 +26,7 @@
 
 <style scoped>
 .footnote {
-  @apply text-size-0.2rem opacity-50 select-none mb-0.25rem;
+  @apply text-size-0.5rem opacity-50 select-none mb-0.25rem;
 }
 .loading {
   position: absolute;
