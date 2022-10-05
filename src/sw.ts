@@ -90,9 +90,6 @@ registerRoute(
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(self.clients.claim())
-  self.queueMicrotask(() => {
-    precacheAndRoute(self.__WB_MANIFEST)
-  })
 })
 
 self.addEventListener('message', (event) => {
@@ -100,5 +97,7 @@ self.addEventListener('message', (event) => {
     event.waitUntil(self.skipWaiting())
   }
 })
+
+precacheAndRoute(self.__WB_MANIFEST)
 
 export {}
