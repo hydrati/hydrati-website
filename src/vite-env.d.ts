@@ -8,6 +8,16 @@ declare module '*.vue' {
   export default component
 }
 
+declare module '*.md?static' {
+  const markdown: [string, Readonly<Record<string, any>>]
+  export default markdown
+}
+
+declare module 'virtual:markdown-precache' {
+  const precache: Record<string, [string, Readonly<Record<string, any>>]>
+  export default precache
+}
+
 declare module 'markdown-it-*' {
   import type MarkdownIt from 'markdown-it'
   const plugin: (md: MarkdownIt) => void

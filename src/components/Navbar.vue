@@ -13,7 +13,7 @@
   font-weight: 300;
   font-display: block;
   opacity: 0;
-  animation: ease-in-opacity 1s ease 1.25s forwards;
+  animation: ease-in-opacity 0.75s ease 0.75s forwards;
   @apply z-50 m-0 px-0 py-2 w-full flex absolute left-0 top-0 flex-row
     justify-center align-middle items-center text-center
     select-none text-1rem transition-opacity delay-75;

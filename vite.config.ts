@@ -11,6 +11,8 @@ import jsx from '@vitejs/plugin-vue-jsx'
 import { VitePWA } from 'vite-plugin-pwa'
 import preload from 'vite-plugin-inject-preload'
 import cssnano from 'cssnano'
+import markdown from './scripts/static-markdown'
+import { resolve } from 'path'
 
 export default defineConfig({
   css: {
@@ -19,6 +21,9 @@ export default defineConfig({
     }
   },
   plugins: [
+    markdown([
+      resolve('public/about-me.md')
+    ], resolve('public')),
     unocss({
       presets: [presetUno(), presetIcons({})],
       include: ['src/**/*.tsx', 'src/**/*.vue', 'src/**/*.jsx'],
@@ -41,7 +46,7 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,ico,png,svg,ts,tsx}'],
         globIgnores: ['**/__sw/**/*.*'],
         vitePlugins: [],
-      },
+      }
     }),
     preload({
       files: [

@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@iconify-json/carbon': ^1.1.8
   '@marcoschulte/vue3-progress': ^0.0.7
+  '@rollup/pluginutils': ^4.2.1
   '@types/lodash': ^4.14.186
   '@types/markdown-it': ^12.2.3
   '@types/markdown-it-emoji': ^2.0.2
@@ -88,6 +89,7 @@ dependencies:
 
 devDependencies:
   '@iconify-json/carbon': 1.1.8
+  '@rollup/pluginutils': 4.2.1
   '@types/lodash': 4.14.186
   '@types/markdown-it': 12.2.3
   '@types/markdown-it-emoji': 2.0.2

@@ -10,6 +10,7 @@
   },
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.8",
+    "@rollup/pluginutils": "^4.2.1",
     "@types/lodash": "^4.14.186",
     "@types/markdown-it": "^12.2.3",
     "@types/markdown-it-emoji": "^2.0.2",

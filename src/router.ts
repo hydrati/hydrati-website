@@ -12,7 +12,7 @@ export const router = createRouter({
   routes: [
     {
       path: '/',
-      component: AsyncIndex,
+      component: async () => await Promise.resolve(AsyncIndex),
     },
   ],
 })
