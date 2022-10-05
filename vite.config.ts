@@ -10,13 +10,19 @@ import vue from '@vitejs/plugin-vue'
 import jsx from '@vitejs/plugin-vue-jsx'
 import { VitePWA } from 'vite-plugin-pwa'
 import preload from 'vite-plugin-inject-preload'
+import cssnano from 'cssnano'
 
 export default defineConfig({
+  css: {
+    postcss: {
+      plugins: [cssnano({ preset: 'default' })]
+    }
+  },
   plugins: [
     unocss({
       presets: [presetUno(), presetIcons({})],
       include: ['src/**/*.tsx', 'src/**/*.vue', 'src/**/*.jsx'],
-      transformers: [directives(), compileClass()],
+      transformers: [compileClass({}), directives()],
     }),
     vue(),
     jsx(),

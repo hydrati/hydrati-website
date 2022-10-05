@@ -6,17 +6,6 @@ import { ExpirationPlugin } from 'workbox-expiration'
 import { CacheableResponsePlugin } from 'workbox-cacheable-response'
 
 declare let self: ServiceWorkerGlobalScope
-precacheAndRoute(self.__WB_MANIFEST)
-
-self.addEventListener('activate', (event) => {
-  event.waitUntil(self.clients.claim())
-})
-
-self.addEventListener('message', (event) => {
-  if (event.data === 'skipWaiting') {
-    event.waitUntil(self.skipWaiting())
-  }
-})
 
 async function updateMarkdown(
   cache: Cache,
@@ -98,5 +87,18 @@ registerRoute(
     ],
   })
 )
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(self.clients.claim())
+  self.queueMicrotask(() => {
+    precacheAndRoute(self.__WB_MANIFEST)
+  })
+})
+
+self.addEventListener('message', (event) => {
+  if (event.data === 'skipWaiting') {
+    event.waitUntil(self.skipWaiting())
+  }
+})
 
 export {}
