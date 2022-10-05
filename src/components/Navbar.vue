@@ -7,10 +7,6 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import 'misans/lib/misans-300-light.min.css'
-</script>
-
 <style scoped>
 .nav {
   font-family: MiSans, Helvetica, sans-serif;
