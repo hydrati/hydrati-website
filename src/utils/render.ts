@@ -21,7 +21,12 @@ export const renderByWorker = async (url: string): Promise<[string, any]> => {
 
 export const render = async (url: string): Promise<[string, any]> => {
   try {
-    return await renderByWorker(url)
+    if ('serviceWorker' in navigator) {
+      const reg = await navigator.serviceWorker.ready
+      if (reg.active != null) return await renderByWorker(url)
+      return await renderMain(url)
+    }
+    return await renderMain(url)
   } catch {
     return await renderMain(url)
   }
