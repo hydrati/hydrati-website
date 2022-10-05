@@ -1,9 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { defineAsyncComponent } from 'vue'
+import Loading from './components/Loading.vue'
 
 const AsyncIndex = defineAsyncComponent({
   loader: async () => await import('./pages/IndexPage.vue'),
-  loadingComponent: async () => await import('./components/Loading.vue'),
+  loadingComponent: Loading,
 })
 
 export const router = createRouter({
