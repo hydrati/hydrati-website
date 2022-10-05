@@ -1,3 +1,5 @@
+// import { useMarkdown } from './markdown-sw'
+
 export const renderMain = async (url: string): Promise<[string, any]> => {
   const { useMarkdown } = await import('../composables/markdown')
   const resp = await fetch(url)

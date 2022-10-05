@@ -34,6 +34,7 @@
     "typescript": "*",
     "unocss": "^0.45.26",
     "vite": "^3.1.0",
+    "vite-plugin-inject-preload": "^1.1.0",
     "vite-plugin-pwa": "^0.13.1"
   },
   "dependencies": {

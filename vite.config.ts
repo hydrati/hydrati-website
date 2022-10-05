@@ -9,38 +9,48 @@ import compileClass from '@unocss/transformer-compile-class'
 import vue from '@vitejs/plugin-vue'
 import jsx from '@vitejs/plugin-vue-jsx'
 import { VitePWA } from 'vite-plugin-pwa'
+import preload from 'vite-plugin-inject-preload'
 
 export default defineConfig({
-  plugins: [unocss({
-    presets: [presetUno(), presetIcons({})],
-    include: ['src/**/*.tsx', 'src/**/*.vue', 'src/**/*.jsx'],
-    transformers: [directives(), compileClass()]
-  }), vue(), jsx(), VitePWA({
-    registerType: 'autoUpdate',
-    strategies: 'injectManifest',
-    srcDir: 'src',
-    filename: 'sw.ts',
-    injectRegister: 'auto',
-    devOptions: {
-      enabled: true,
-      type: 'module'
-    },
-    manifest: {
-
-    },
-    injectManifest: {
-      globPatterns: ['**/*.{js,css,html,ico,png,svg,ts,tsx}'],
-      globIgnores: ['**/__sw/**/*.*'],
-      vitePlugins: [],
-    }
-  })],
+  plugins: [
+    unocss({
+      presets: [presetUno(), presetIcons({})],
+      include: ['src/**/*.tsx', 'src/**/*.vue', 'src/**/*.jsx'],
+      transformers: [directives(), compileClass()],
+    }),
+    vue(),
+    jsx(),
+    VitePWA({
+      registerType: 'autoUpdate',
+      strategies: 'injectManifest',
+      srcDir: 'src',
+      filename: 'sw.ts',
+      injectRegister: 'auto',
+      devOptions: {
+        enabled: true,
+        type: 'module',
+      },
+      manifest: {},
+      injectManifest: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,ts,tsx}'],
+        globIgnores: ['**/__sw/**/*.*'],
+        vitePlugins: [],
+      },
+    }),
+    preload({
+      files: [
+        { match: /.*-[a-zA-Z]*\.[a-z-0-9]*\.woff2$/ },
+        { match: /.*\.css$/ },
+      ],
+    }),
+  ],
   server: {
     headers: {
       'Cross-Origin-Opener-Policy': 'same-origin',
-      'Cross-Origin-Embedder-Policy': 'require-corp'
-    }
+      'Cross-Origin-Embedder-Policy': 'require-corp',
+    },
   },
   build: {
-    target: ['chrome70']
-  }
+    target: ['chrome70'],
+  },
 })
