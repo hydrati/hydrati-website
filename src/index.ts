@@ -6,7 +6,6 @@ import { Vue3ProgressPlugin } from '@marcoschulte/vue3-progress'
 import './registerSw'
 
 import('./styles')
-console.log(await import('virtual:markdown-precache'))
 
 createApp(App)
   .use(router)
