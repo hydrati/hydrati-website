@@ -3,6 +3,7 @@ import { createApp } from 'vue'
 import { App } from './App'
 import { createPinia } from 'pinia'
 import { Vue3ProgressPlugin } from '@marcoschulte/vue3-progress'
+import './registerSw'
 
 import('./styles')
 

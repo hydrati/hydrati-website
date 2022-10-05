@@ -13,9 +13,11 @@ self.addEventListener('activate', (event) => {
   event.waitUntil(self.clients.claim())
 })
 
-self.oninstall = async (event) => {
-  event.waitUntil(self.skipWaiting())
-}
+self.addEventListener('message', (event) => {
+  if (event.data === 'skipWaiting') {
+    event.waitUntil(self.skipWaiting())
+  }
+})
 
 async function updateMarkdown(
   cache: Cache,
@@ -90,7 +92,7 @@ registerRoute(
     )
   },
   new StaleWhileRevalidate({
-    cacheName: 'articles-cache',
+    cacheName: 'article-cache',
     plugins: [
       new ExpirationPlugin({ maxEntries: 300, maxAgeSeconds: 31536e3 }),
       new CacheableResponsePlugin({ statuses: [0, 200] }),

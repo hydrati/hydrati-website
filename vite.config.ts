@@ -20,15 +20,18 @@ export default defineConfig({
     strategies: 'injectManifest',
     srcDir: 'src',
     filename: 'sw.ts',
+    injectRegister: 'auto',
     devOptions: {
-      enabled: true
+      enabled: true,
+      type: 'module'
     },
     manifest: {
 
     },
     injectManifest: {
       globPatterns: ['**/*.{js,css,html,ico,png,svg,ts,tsx}'],
-      globIgnores: ['**/__sw/**/*.*']
+      globIgnores: ['**/__sw/**/*.*'],
+      vitePlugins: [],
     }
   })],
   server: {
