@@ -1,8 +1,7 @@
 import { precacheAndRoute } from 'workbox-precaching'
 import { registerRoute } from 'workbox-routing'
 import { StaleWhileRevalidate, CacheFirst } from 'workbox-strategies'
-import {} from 'workbox-core'
-import { useMarkdown } from './composables/markdown'
+import { useMarkdown } from './utils/markdown-sw'
 import { ExpirationPlugin } from 'workbox-expiration'
 import { CacheableResponsePlugin } from 'workbox-cacheable-response'
 
