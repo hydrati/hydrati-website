@@ -38,6 +38,6 @@ export default defineConfig({
     }
   },
   build: {
-    target: ['esnext']
+    target: ['chrome70']
   }
 })
