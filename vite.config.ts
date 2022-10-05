@@ -52,6 +52,7 @@ export default defineConfig({
       files: [
         { match: /.*-[a-zA-Z]*\.[a-z-0-9]*\.woff2$/ },
         { match: /.*\.css$/ },
+        { match: /.*markdown\-precache.*\.js$/ },
       ],
     }),
   ],
