@@ -15,7 +15,7 @@ I am a student as well as a open sourceror, a Web developer and a UI/UX designer
 ### I am currently focusing on
 - Modern Web Technologies. JavaScript, Vue, Vite and TypeScript.
 
-### Contanct me
+### Contact me
 - GitHub [@hydrati](https://github.com/hydrati)
 - bilibili [@水合Hydration](https://space.bilibili.com/98955693)
 - Email [hy@cladonia.team](mailto:hy@cladonia.team)
